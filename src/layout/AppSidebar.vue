@@ -1,8 +1,23 @@
 <script setup>
+import router from '@/router';
+import { useAuthStore } from '@/stores/auth.store';
+import { handle } from '@primeuix/themes/aura/imagecompare';
+import { Dialog, Button } from 'primevue';
 import { ref } from 'vue';
 import { useRoute } from 'vue-router';
 
+
+const authStore = useAuthStore()
 const route = useRoute();
+const {user} = authStore
+
+const logoutDialog = ref(false)
+
+const handleLogout = async () => {
+    await authStore.logout()
+    logoutDialog.value = false
+    router.push({name: 'login'})
+}
 
 const menuItems = ref([
     {
@@ -44,22 +59,33 @@ const menuItems = ref([
         </div>
         <!-- User Profile -->
         <div class="p-4 border-t border-surface-200">
-            <div class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-surface-50">
+            <button @click="logoutDialog = true" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-surface-50">
                 <div class="w-9 h-9 rounded-full bg-surface-200 flex items-center justify-center overflow-hidden">
                     <i class="pi pi-user text-lg text-surface-600"></i>
                 </div>
                 <div class="text-life">
                     <div class="text-sm font-semibold text-surface-900">
-                        Nur Siti Aisyah
+                        {{ user?.name }}
                     </div>
                     <div class="text-xs text-surface-500">
-                        nur617859@gmail.com
+                        {{ user?.email }}
                     </div>
                 </div>
                 <div class="ml-auto w-8 h-8 rounded-lg flex items-center text-surface-400 group-hover:bg-red-50 group-hover:text-red-100 transition-colors">
                     <i class="pi pi-sign-out text-lg"></i>
                 </div>
-            </div>
+            </button>
         </div>
     </div>
+
+        <!-- Dialog Logout -->
+    <Dialog v-model:visible="logoutDialog" modal header="Confirm Logout" :style="{ width: '25rem' }">
+        <span class="text-surface-500 block mb-8">Are you sure you want to logout?</span>
+        <div class="flex justify-end gap-2">
+            <Button type="button" label="Cancel" severity="secondary" @click="logoutDialog = false" />
+            <Button type="button" label="Logout" severity="danger" @click="handleLogout" />
+        </div>
+    </Dialog>
+
+
 </template>

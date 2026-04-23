@@ -8,6 +8,7 @@ import './assets/main.css'
 
 import App from './App.vue'
 import router from './router'
+import { option } from '@primeuix/themes/aura/autocomplete';
 
 const app = createApp(App)
 
@@ -54,7 +55,10 @@ colorScheme: {
 
 app.use(PrimeVue, {
     theme: {
-        preset:FlashPreset
+        preset:FlashPreset,
+        options: {
+            darkModeSelector: '.app-dark'
+        }
     }
 })
 
