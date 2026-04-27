@@ -1,6 +1,8 @@
 import AppLayout from '@/layout/AppLayout.vue'
 import Dashboard from '@/pages/Dashboard.vue'
 import Login from '@/pages/auth/Login.vue'
+import CategoryList from '@/pages/product-categories/CategoryList.vue'
+
 import { useAuthStore } from '@/stores/auth.store'
 import { createRouter, createWebHistory } from 'vue-router'
 
@@ -22,6 +24,11 @@ const router = createRouter({
                 path: '',
                 name: 'dashboard',
                 component: Dashboard
+            },
+            {
+                path: '/product-categories',
+                name: 'product-categories',
+                component: CategoryList
             }
         ]
     }
