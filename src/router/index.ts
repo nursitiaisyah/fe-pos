@@ -1,6 +1,7 @@
 import AppLayout from '@/layout/AppLayout.vue'
 import Dashboard from '@/pages/Dashboard.vue'
 import Login from '@/pages/auth/Login.vue'
+import CategoryForm from '@/pages/product-categories/CategoryForm.vue'
 import CategoryList from '@/pages/product-categories/CategoryList.vue'
 
 import { useAuthStore } from '@/stores/auth.store'
@@ -29,6 +30,16 @@ const router = createRouter({
                 path: '/product-categories',
                 name: 'product-categories',
                 component: CategoryList
+            },
+            {
+                path: '/product-categories/create',
+                name: 'product-categories-create',
+                component: CategoryForm
+            },
+            {
+                path: '/product-categories/:id/edit',
+                name: 'product-categories-edit',
+                component: CategoryForm
             }
         ]
     }
