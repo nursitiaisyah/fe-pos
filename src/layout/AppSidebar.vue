@@ -31,7 +31,8 @@ const menuItems = ref([
         items: [
             {icon: "pi pi-tag", to: "/product-categories", label: "Product Categories"},
             {icon: "pi pi-box", to: "/products", label: "Products"},
-            {icon: "pi pi-users", to: "/customers", label: "Customers"}
+            {icon: "pi pi-users", to: "/customers", label: "Customers"},
+            {icon: "pi pi-receipt", to: "/transactions", label: "Transactions"}
         ]
     }
 ])
