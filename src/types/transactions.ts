@@ -1,3 +1,5 @@
+import type { Product } from "./products"
+
 export interface TransactionItem {
     id: number
     product_id: number
@@ -20,4 +22,9 @@ export interface Transaction {
         name: string
     } | null
     items?: TransactionItem[]
+}
+
+export interface CartItem {
+    product: Product
+    quantity: number
 }

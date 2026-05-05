@@ -12,6 +12,7 @@ import TransactionDetail from '@/pages/transactions/TransactionDetail.vue'
 
 import { useAuthStore } from '@/stores/auth.store'
 import { createRouter, createWebHistory } from 'vue-router'
+import PosView from '@/pages/pos/PosView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -86,6 +87,11 @@ const router = createRouter({
                 path: '/transactions/:id',
                 name: 'transactions-detail',
                 component: TransactionDetail
+            },
+            {
+                path: '/pos',
+                name: 'pos',
+                component: PosView
             }
         ]
     }
